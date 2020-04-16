@@ -1,0 +1,20 @@
+//@version=5
+indicator("Auto Fib Extension", overlay=true)
+
+depthTooltip = "The minimum number of bars that will be taken into account when calculating the indicator."
+depth = input.int(title="Depth", defval=10, minval=1, inline = "Pivots", tooltip=depthTooltip)
+reverse = input(false, "Reverse")
+var extendLeft = input(false, "Extend Left    |    Extend Right", inline = "Extend Lines")
+var extendRight = input(true, "", inline = "Extend Lines")
+var extending = extend.none
+if extendLeft and extendRight
+    extending := extend.both
+if extendLeft and not extendRight
+    extending := extend.left
+if not extendLeft and extendRight
+    extending := extend.right
+prices = input(true, "Show Prices")
+levels = input(true, "Show Levels", inline = "Levels")
+levelsFormat = input.string("Values", "", options = ["Values", "Percent"], inline = "Levels")
+labelsPosition = input.string("Left", "Labels Position", options = ["Left", "Right"])
+var int backgroundTransparency = input.int(85, "Background Transparency", minval = 
