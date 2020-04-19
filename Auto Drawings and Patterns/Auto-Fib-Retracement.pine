@@ -106,4 +106,83 @@ _draw_label(price, txt, txtColor) =>
     labelsAlignStr = labelsPosition == "Left" ? labelsAlignStrLeft : labelsAlignStrRight
     var id = label.new(x=x, y=price, text=labelsAlignStr, textcolor=txtColor, style=labelStyle, textalign=align, color=#00000000)
     label.set_xy(id, x, price)
-    label.set_text(id, labelsAl
+    label.set_text(id, labelsAlignStr)
+    label.set_textcolor(id, txtColor)
+
+_wrap(txt) =>
+    "(" + str.tostring(txt, format.mintick) + ")"
+
+_label_txt(level, price) =>
+    l = levelsFormat == "Values" ? str.tostring(level) : str.tostring(level * 100) + "%"
+    (levels ? l : "") + (prices ? _wrap(price) : "")
+
+_crossing_level(sr, r) =>
+    (r > sr and r < sr[1]) or (r < sr and r > sr[1])
+
+startPrice = reverse ? line.get_y1(lineLast) : pLast
+endPrice = reverse ? pLast : line.get_y1(lineLast)
+
+iHL = startPrice > endPrice
+diff = (iHL ? -1 : 1) * math.abs(startPrice - endPrice)
+
+processLevel(show, value, colorL, lineIdOther) =>
+    float m = value
+	r = startPrice + diff * m
+    if show
+		lineId = _draw_line(r, colorL)
+        _draw_label(r, _label_txt(m, r), colorL)
+        if _crossing_level(close, r)
+            alert("Autofib: " + syminfo.ticker + " crossing level " + str.tostring(value))
+        if not na(lineIdOther)
+            linefill.new(lineId, lineIdOther, color = color.new(colorL, backgroundTransparency))
+		lineId
+    else
+		lineIdOther
+
+show_0 = input(true, "", inline = "Level0")
+value_0 = input(0, "", inline = "Level0")
+color_0 = input(#787b86, "", inline = "Level0")
+
+show_0_236 = input(true, "", inline = "Level0")
+value_0_236 = input(0.236, "", inline = "Level0")
+color_0_236 = input(#f44336, "", inline = "Level0")
+
+show_0_382 = input(true, "", inline = "Level1")
+value_0_382 = input(0.382, "", inline = "Level1")
+color_0_382 = input(#81c784, "", inline = "Level1")
+
+show_0_5 = input(true, "", inline = "Level1")
+value_0_5 = input(0.5, "", inline = "Level1")
+color_0_5 = input(#4caf50, "", inline = "Level1")
+
+show_0_618 = input(true, "", inline = "Level2")
+value_0_618 = input(0.618, "", inline = "Level2")
+color_0_618 = input(#009688, "", inline = "Level2")
+
+show_0_65 = input(false, "", inline = "Level2")
+value_0_65 = input(0.65, "", inline = "Level2")
+color_0_65 = input(#009688, "", inline = "Level2")
+
+show_0_786 = input(true, "", inline = "Level3")
+value_0_786 = input(0.786, "", inline = "Level3")
+color_0_786 = input(#64b5f6, "", inline = "Level3")
+
+show_1 = input(true, "", inline = "Level3")
+value_1 = input(1, "", inline = "Level3")
+color_1 = input(#787b86, "", inline = "Level3")
+
+show_1_272 = input(false, "", inline = "Level4")
+value_1_272 = input(1.272, "", inline = "Level4")
+color_1_272 = input(#81c784, "", inline = "Level4")
+
+show_1_414 = input(false, "", inline = "Level4")
+value_1_414 = input(1.414, "", inline = "Level4")
+color_1_414 = input(#f44336, "", inline = "Level4")
+
+show_1_618 = input(true, "", inline = "Level5")
+value_1_618 = input(1.618, "", inline = "Level5")
+color_1_618 = input(#2962ff, "", inline = "Level5")
+
+show_1_65 = input(false, "", inline = "Level5")
+value_1_65 = input(1.65, "", inline = "Level5")
+color_1_65 = input(#2962ff, "", inlin
