@@ -17,4 +17,105 @@ prices = input(true, "Show Prices")
 levels = input(true, "Show Levels", inline = "Levels")
 levelsFormat = input.string("Values", "", options = ["Values", "Percent"], inline = "Levels")
 labelsPosition = input.string("Left", "Labels Position", options = ["Left", "Right"])
-var int backgroundTransparency = input.int(85, "Background Transparency", minval = 
+var int backgroundTransparency = input.int(85, "Background Transparency", minval = 0, maxval = 100)
+var float upperThreshold = 0.236
+var float lowerThreshold = 1.0
+
+var line lineLastHL = na
+var line lineLastLH = na
+var line lineLast = na
+
+var float iLastH = 0
+var float iLastL = 0
+var float pLastH = 0
+var float pLastL = 0
+
+var float[] iPivotsH = array.new_float()
+var float[] iPivotsL = array.new_float()
+var float[] pPivotsH = array.new_float()
+var float[] pPivotsL = array.new_float()
+
+var isHighLast = false
+var float startPrice = na
+var float endPrice = na
+var float diff = na
+
+pivots(src, length, isHigh) =>
+    l2 = length * 2
+    c = nz(src[length])
+    ok = true
+    for i = 0 to l2
+        if isHigh and src[i] > c
+            ok := false
+
+        if not isHigh and src[i] < c
+            ok := false
+    if ok
+        [bar_index[length], c]
+    else
+        [int(na), float(na)]
+[iH, pH] = pivots(high, depth / 2, true)
+[iL, pL] = pivots(low, depth / 2, false)
+
+countPivotsH = array.size(iPivotsH)
+countPivotsL = array.size(iPivotsL)
+
+if countPivotsH > 0 and countPivotsL > 0
+    iLastH := array.get(iPivotsH, countPivotsH-1)
+    iLastL := array.get(iPivotsL, countPivotsL-1)
+    isHighLast := iLastH > iLastL
+    iLastH := 1
+    if isHighLast
+        if not na(iH)
+            pLastH := array.get(pPivotsH, countPivotsH-1)
+            if pH > pLastH
+                array.set(iPivotsH, countPivotsH-1, iH)
+                array.set(pPivotsH, countPivotsH-1, pH)
+            iH := na
+    else
+        if not na(iL)
+            pLastL := array.get(pPivotsL, countPivotsL-1)
+            if pL < pLastL
+                array.set(iPivotsL, countPivotsL-1, iL)
+                array.set(pPivotsL, countPivotsL-1, pL)
+            iL := na
+
+if not na(iH)
+    array.push(iPivotsH, iH)
+    array.push(pPivotsH, pH)
+
+if not na(iL)
+    array.push(iPivotsL, iL)
+    array.push(pPivotsL, pL)
+
+pPivotsHCopy = array.copy(pPivotsH)
+pPivotsLCopy = array.copy(pPivotsL)
+iPivotsHCopy = array.copy(iPivotsH)
+iPivotsLCopy = array.copy(iPivotsL)
+
+if barstate.islast
+    for j = bar_index to 0
+        if array.size(iPivotsHCopy) == 0 or array.size(iPivotsLCopy) == 0
+            break
+
+        iLastH := array.pop(iPivotsHCopy)
+        iLastL := array.pop(iPivotsLCopy)
+
+        pLastH := array.pop(pPivotsHCopy)
+        pLastL := array.pop(pPivotsLCopy)
+
+        iPrevPivot = 0.0
+        pPrevPivot = 0.0
+
+        isHighLast := iLastH > iLastL
+
+        if isHighLast
+            for i = array.size(iPivotsHCopy)-1 to 0
+                if i < 0
+                    break
+                else if array.get(iPivotsHCopy, i) < iLastL
+                    break
+                if array.get(pPivotsHCopy, i) > pLastH
+                    iLastH := array.pop(iPivotsHCopy)
+                    pLastH := array.pop(pPivotsHCopy)
+  
