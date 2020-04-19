@@ -181,4 +181,68 @@ _draw_line(price, col) =>
     if not na(lineLast)
         line.set_xy1(id, line.get_x1(lineLast), price)
         line.set_xy2(id, line.get_x2(lineLast), price)
-    
+    id
+
+_draw_label(price, txt, txtColor) =>
+    if not na(price)
+        x = labelsPosition == "Left" ? line.get_x1(lineLast) : not extendRight ? line.get_x2(lineLast) : bar_index
+        labelStyle = labelsPosition == "Left" ? label.style_label_right : label.style_label_left
+        align = labelsPosition == "Left" ? text.align_right : text.align_left
+        labelsAlignStrLeft = txt + '\n ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏ \n'
+        labelsAlignStrRight = '       ' + txt + '\n ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏  ‏ \n'
+        labelsAlignStr = labelsPosition == "Left" ? labelsAlignStrLeft : labelsAlignStrRight
+        var id = label.new(x=x, y=price, text=labelsAlignStr, textcolor=txtColor, style=labelStyle, textalign=align, color=#00000000)
+        label.set_xy(id, x, price)
+        label.set_text(id, labelsAlignStr)
+        label.set_textcolor(id, txtColor)
+
+_wrap(txt) =>
+    "(" + str.tostring(txt, format.mintick) + ")"
+
+_label_txt(level, price) =>
+    if not na(price)
+        l = levelsFormat == "Values" ? str.tostring(level) : str.tostring(level * 100) + "%"
+        (levels ? l : "") + (prices ? _wrap(price) : "")
+
+_crossing_level(sr, r) =>
+    (r > sr and r < sr[1]) or (r < sr and r > sr[1])
+
+diff := (isHighLast ? -1 : 1) * math.abs(startPrice - endPrice)
+offset = isHighLast ? line.get_y1(lineLastLH) - line.get_y2(lineLastLH) : line.get_y1(lineLastHL) - line.get_y2(lineLastHL)
+offset := (isHighLast ? -1 : 1) * math.abs(offset)
+
+processLevel(show, value, colorL, lineIdOther) =>
+    float m = value
+	r = (endPrice - offset) + ((reverse ? -1 : 1) * diff * m)
+    if show
+		lineId = _draw_line(r, colorL)
+        _draw_label(r, _label_txt(m, r), colorL)
+        if _crossing_level(close, r)
+            alert("Autofib: " + syminfo.ticker + " crossing level " + str.tostring(value))
+        if not na(lineIdOther)
+            linefill.new(lineId, lineIdOther, color = color.new(colorL, backgroundTransparency))
+		lineId
+    else
+		lineIdOther
+
+show_0 = input(true, "", inline = "Level0")
+value_0 = input(0, "", inline = "Level0")
+color_0 = input(#787b86, "", inline = "Level0")
+
+show_0_236 = input(true, "", inline = "Level0")
+value_0_236 = input(0.236, "", inline = "Level0")
+color_0_236 = input(#f44336, "", inline = "Level0")
+
+show_0_382 = input(true, "", inline = "Level1")
+value_0_382 = input(0.382, "", inline = "Level1")
+color_0_382 = input(#81c784, "", inline = "Level1")
+
+show_0_5 = input(true, "", inline = "Level1")
+value_0_5 = input(0.5, "", inline = "Level1")
+color_0_5 = input(#4caf50, "", inline = "Level1")
+
+show_0_618 = input(true, "", inline = "Level2")
+value_0_618 = input(0.618, "", inline = "Level2")
+color_0_618 = input(#009688, "", inline = "Level2")
+
+sho
