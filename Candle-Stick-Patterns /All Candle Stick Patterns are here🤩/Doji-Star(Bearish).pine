@@ -1,5 +1,6 @@
+
 //@version=5
-indicator("Abandoned Baby - Bullish", shorttitle = "Abandoned Baby - Bull", overlay=true)
+indicator("Doji Star - Bearish", shorttitle = "Doji Star - Bear", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -45,11 +46,13 @@ C_Doji = C_IsDojiBody and C_ShadowEquals
 patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
-label_color_bullish = input(color.blue, "Label Color Bullish")
-C_AbandonedBabyBullishNumberOfCandles = 3
-C_AbandonedBabyBullish = C_DownTrend[2] and C_BlackBody[2] and C_IsDojiBody[1] and low[2] > high[1] and C_WhiteBody and high[1] < low
-alertcondition(C_AbandonedBabyBullish, title = "New pattern detected", message = "New Abandoned Baby – Bullish pattern detected")
-if C_AbandonedBabyBullish
-    var ttBullishAbandonedBaby = "Abandoned Baby\nThis candlestick pattern is quite rare as far as reversal patterns go. The first of the pattern is a large down candle. Next comes a doji candle that gaps below the candle before it. The doji candle is then followed by another candle that opens even higher and swiftly moves to the upside."
-    label.new(bar_index, patternLabelPosLow, text="AB", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishAbandonedBaby)
-bgcolor(ta.highest(C_AbandonedBabyBullish?1:0, C_AbandonedBabyBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_AbandonedBabyBullishNumberOfCandles-1))
+label_color_bearish = input(color.red, "Label Color Bearish")
+C_DojiStarBearishNumberOfCandles = 2
+C_DojiStarBearish = false
+if C_UpTrend and C_WhiteBody[1] and C_LongBody[1] and C_IsDojiBody and C_BodyLo > C_BodyHi[1]
+	C_DojiStarBearish := true
+alertcondition(C_DojiStarBearish, title = "New pattern detected", message = "New Doji Star – Bearish pattern detected")
+if C_DojiStarBearish
+    var ttBearishDojiStar = "Doji Star\nThis is a bearish reversal candlestick pattern that is found in an uptrend and consists of two candles. First comes a long green candle, followed by a Doji candle (except 4-Price Doji) that opens above the body of the first one, creating a gap. It is considered a reversal signal with confirmation during the next trading day."
+    label.new(bar_index, patternLabelPosHigh, text="DS", style=label.style_label_down, color = label_color_bearish, textcolor=color.white, tooltip = ttBearishDojiStar)
+bgcolor(ta.highest(C_DojiStarBearish?1:0, C_DojiStarBearishNumberOfCandles)!=0 ? color.new(color.red, 90) : na, offset=-(C_DojiStarBearishNumberOfCandles-1))
