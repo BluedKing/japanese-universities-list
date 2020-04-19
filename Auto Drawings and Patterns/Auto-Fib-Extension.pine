@@ -118,4 +118,67 @@ if barstate.islast
                 if array.get(pPivotsHCopy, i) > pLastH
                     iLastH := array.pop(iPivotsHCopy)
                     pLastH := array.pop(pPivotsHCopy)
-  
+                else
+                    array.remove(iPivotsHCopy, i)
+                    array.remove(pPivotsHCopy, i)
+        else
+            for i = array.size(iPivotsLCopy)-1 to 0
+                if i < 0
+                    break
+                else if array.get(iPivotsLCopy, i) < iLastH
+                    break
+                if array.get(pPivotsLCopy, i) < pLastL
+                    iLastL := array.pop(iPivotsLCopy)
+                    pLastL := array.pop(pPivotsLCopy)
+                else
+                    array.remove(iPivotsLCopy, i)
+                    array.remove(pPivotsLCopy, i)
+
+        if array.size(iPivotsHCopy) == 0 or array.size(iPivotsLCopy) == 0
+            break
+
+        isHighLast := iLastH > iLastL
+
+        if isHighLast
+            iPrevPivot := array.get(iPivotsHCopy, array.size(iPivotsHCopy)-1)
+            pPrevPivot := array.get(pPivotsHCopy, array.size(iPivotsHCopy)-1)
+        else
+            iPrevPivot := array.get(iPivotsLCopy, array.size(iPivotsLCopy)-1)
+            pPrevPivot := array.get(pPivotsLCopy, array.size(iPivotsLCopy)-1)
+
+        if isHighLast
+            startPrice := pPrevPivot
+            endPrice := pLastL
+            diff := math.abs(startPrice - endPrice)
+            if pLastH > endPrice + diff * lowerThreshold or pLastH < endPrice + diff * upperThreshold
+                array.push(iPivotsLCopy, iLastL)
+                array.push(pPivotsLCopy, pLastL)
+                continue
+            line.delete(lineLastHL)
+            line.delete(lineLastLH)
+            line.delete(lineLast)
+            lineLastHL := line.new(int(iPrevPivot), pPrevPivot, int(iLastL), pLastL, color=color.red, width=1, style=line.style_dashed)
+            lineLastLH := line.new(int(iLastL), pLastL, int(iLastH), pLastH, color=color.green, width=1, style=line.style_dashed)
+            lineLast := lineLastLH
+        else
+            startPrice := pPrevPivot
+            endPrice := pLastH
+            diff := math.abs(startPrice - endPrice)
+            if pLastL < endPrice - diff * lowerThreshold or pLastL > endPrice - diff * upperThreshold
+                array.push(iPivotsHCopy, iLastH)
+                array.push(pPivotsHCopy, pLastH)
+                continue
+            line.delete(lineLastHL)
+            line.delete(lineLastLH)
+            line.delete(lineLast)
+            lineLastLH := line.new(int(iPrevPivot), pPrevPivot, int(iLastH), pLastH, color=color.red, width=1, style=line.style_dashed)
+            lineLastHL := line.new(int(iLastH), pLastH, int(iLastL), pLastL, color=color.green, width=1, style=line.style_dashed)
+            lineLast := lineLastHL
+        break
+
+_draw_line(price, col) =>
+    var id = line.new(0, price, 0, price, color=col, width=1, extend=extending)
+    if not na(lineLast)
+        line.set_xy1(id, line.get_x1(lineLast), price)
+        line.set_xy2(id, line.get_x2(lineLast), price)
+    
