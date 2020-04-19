@@ -1,0 +1,32 @@
+//@version=5
+indicator("Auto Fib Retracement", overlay=true)
+
+devTooltip = "Deviation is a multiplier that affects how much the price should deviate from the previous pivot in order for the bar to become a new pivot."
+depthTooltip = "The minimum number of bars that will be taken into account when calculating the indicator."
+// pivots threshold
+threshold_multiplier = input.float(title="Deviation", defval=3, minval=0, tooltip=devTooltip)
+dev_threshold = ta.atr(10) / close * 100 * threshold_multiplier
+depth = input.int(title="Depth", defval=10, minval=1, tooltip=depthTooltip)
+reverse = input(false, "Reverse")
+var extendLeft = input(false, "Extend Left    |    Extend Right", inline = "Extend Lines")
+var extendRight = input(true, "", inline = "Extend Lines")
+var extending = extend.none
+if extendLeft and extendRight
+    extending := extend.both
+if extendLeft and not extendRight
+    extending := extend.left
+if not extendLeft and extendRight
+    extending := extend.right
+prices = input(true, "Show Prices")
+levels = input(true, "Show Levels", inline = "Levels")
+levelsFormat = input.string("Values", "", options = ["Values", "Percent"], inline = "Levels")
+labelsPosition = input.string("Left", "Labels Position", options = ["Left", "Right"])
+var int backgroundTransparency = input.int(85, "Background Transparency", minval = 0, maxval = 100)
+
+var line lineLast = na
+var int iLast = 0
+var int iPrev = 0
+var float pLast = 0
+var isHighLast = false // otherwise the last pivot is a low pivot
+
+pivots(src, length, isHigh) =>
