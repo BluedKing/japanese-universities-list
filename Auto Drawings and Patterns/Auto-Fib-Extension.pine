@@ -245,4 +245,75 @@ show_0_618 = input(true, "", inline = "Level2")
 value_0_618 = input(0.618, "", inline = "Level2")
 color_0_618 = input(#009688, "", inline = "Level2")
 
-sho
+show_0_65 = input(false, "", inline = "Level2")
+value_0_65 = input(0.65, "", inline = "Level2")
+color_0_65 = input(#009688, "", inline = "Level2")
+
+show_0_786 = input(true, "", inline = "Level3")
+value_0_786 = input(0.786, "", inline = "Level3")
+color_0_786 = input(#64b5f6, "", inline = "Level3")
+
+show_1 = input(true, "", inline = "Level3")
+value_1 = input(1, "", inline = "Level3")
+color_1 = input(#787b86, "", inline = "Level3")
+
+show_1_272 = input(false, "", inline = "Level4")
+value_1_272 = input(1.272, "", inline = "Level4")
+color_1_272 = input(#81c784, "", inline = "Level4")
+
+show_1_414 = input(false, "", inline = "Level4")
+value_1_414 = input(1.414, "", inline = "Level4")
+color_1_414 = input(#f44336, "", inline = "Level4")
+
+show_1_618 = input(true, "", inline = "Level5")
+value_1_618 = input(1.618, "", inline = "Level5")
+color_1_618 = input(#2962ff, "", inline = "Level5")
+
+show_1_65 = input(false, "", inline = "Level5")
+value_1_65 = input(1.65, "", inline = "Level5")
+color_1_65 = input(#2962ff, "", inline = "Level5")
+
+show_2_618 = input(true, "", inline = "Level6")
+value_2_618 = input(2.618, "", inline = "Level6")
+color_2_618 = input(#f44336, "", inline = "Level6")
+
+show_2_65 = input(false, "", inline = "Level6")
+value_2_65 = input(2.65, "", inline = "Level6")
+color_2_65 = input(#f44336, "", inline = "Level6")
+
+show_3_618 = input(true, "", inline = "Level7")
+value_3_618 = input(3.618, "", inline = "Level7")
+color_3_618 = input(#9c27b0, "", inline = "Level7")
+
+show_3_65 = input(false, "", inline = "Level7")
+value_3_65 = input(3.65, "", inline = "Level7")
+color_3_65 = input(#9c27b0, "", inline = "Level7")
+
+show_4_236 = input(true, "", inline = "Level8")
+value_4_236 = input(4.236, "", inline = "Level8")
+color_4_236 = input(#e91e63, "", inline = "Level8")
+
+show_4_618 = input(false, "", inline = "Level8")
+value_4_618 = input(4.618, "", inline = "Level8")
+color_4_618 = input(#81c784, "", inline = "Level8")
+
+show_neg_0_236 = input(false, "", inline = "Level9")
+value_neg_0_236 = input(-0.236, "", inline = "Level9")
+color_neg_0_236 = input(#f44336, "", inline = "Level9")
+
+show_neg_0_382 = input(false, "", inline = "Level9")
+value_neg_0_382 = input(-0.382, "", inline = "Level9")
+color_neg_0_382 = input(#81c784, "", inline = "Level9")
+
+show_neg_0_618 = input(false, "", inline = "Level10")
+value_neg_0_618 = input(-0.618, "", inline = "Level10")
+color_neg_0_618 = input(#009688, "", inline = "Level10")
+
+show_neg_0_65 = input(false, "", inline = "Level10")
+value_neg_0_65 = input(-0.65, "", inline = "Level10")
+color_neg_0_65 = input(#009688, "", inline = "Level10")
+
+
+lineId0 = processLevel(show_neg_0_65, value_neg_0_65, color_neg_0_65, line(na))
+lineId1 = processLevel(show_neg_0_618, value_neg_0_618, color_neg_0_618, lineId0)
+lineId
