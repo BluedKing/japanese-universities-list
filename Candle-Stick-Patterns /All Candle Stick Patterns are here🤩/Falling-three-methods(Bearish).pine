@@ -1,0 +1,13 @@
+//@version=5
+indicator("Falling Three Methods - Bearish", shorttitle = "Falling Three Methods - Bear", overlay=true)
+
+C_DownTrend = true
+C_UpTrend = true
+var trendRule1 = "SMA50"
+var trendRule2 = "SMA50, SMA200"
+var trendRule = input.string(trendRule1, "Detect Trend Based On", options=[trendRule1, trendRule2, "No detection"])
+
+if trendRule == trendRule1
+	priceAvg = ta.sma(close, 50)
+	C_DownTrend := close < priceAvg
+	C_UpTrend := close
