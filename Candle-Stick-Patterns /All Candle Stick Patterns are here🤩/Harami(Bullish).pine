@@ -1,5 +1,6 @@
+
 //@version=5
-indicator("Harami - Bearish", shorttitle = "Harami - Bear", overlay=true)
+indicator("Harami - Bullish", shorttitle = "Harami - Bull", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -45,11 +46,11 @@ C_Doji = C_IsDojiBody and C_ShadowEquals
 patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
-label_color_bearish = input(color.red, "Label Color Bearish")
-C_HaramiBearishNumberOfCandles = 2
-C_HaramiBearish = C_LongBody[1] and C_WhiteBody[1] and C_UpTrend[1] and C_BlackBody and C_SmallBody and high <= C_BodyHi[1] and low >= C_BodyLo[1]
-alertcondition(C_HaramiBearish, title = "New pattern detected", message = "New Harami – Bearish pattern detected")
-if C_HaramiBearish
-    var ttBearishHarami = "Harami\nThis is a two-day candlestick pattern with a small, red-bodied candle that is entirely encompassed within the body that was once a green-bodied candle."
-    label.new(bar_index, patternLabelPosHigh, text="BH", style=label.style_label_down, color = label_color_bearish, textcolor=color.white, tooltip = ttBearishHarami)
-bgcolor(ta.highest(C_HaramiBearish?1:0, C_HaramiBearishNumberOfCandles)!=0 ? color.new(color.red, 90) : na, offset=-(C_HaramiBearishNumberOfCandles-1))
+label_color_bullish = input(color.blue, "Label Color Bullish")
+C_HaramiBullishNumberOfCandles = 2
+C_HaramiBullish = C_LongBody[1] and C_BlackBody[1] and C_DownTrend[1] and C_WhiteBody and C_SmallBody and high <= C_BodyHi[1] and low >= C_BodyLo[1]
+alertcondition(C_HaramiBullish, title = "New pattern detected", message = "New Harami – Bullish pattern detected")
+if C_HaramiBullish
+    var ttBullishHarami = "Harami\nThis two-day candlestick pattern consists of a small-bodied green candle that is entirely encompassed within the body of what was once a red-bodied candle."
+    label.new(bar_index, patternLabelPosLow, text="BH", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishHarami)
+bgcolor(ta.highest(C_HaramiBullish?1:0, C_HaramiBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_HaramiBullishNumberOfCandles-1))
