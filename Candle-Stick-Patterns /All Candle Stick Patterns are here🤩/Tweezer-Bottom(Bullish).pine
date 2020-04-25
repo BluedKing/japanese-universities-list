@@ -1,0 +1,2 @@
+//@version=5
+indicator("Tweezer Bottom - Bullish", shorttitle = "Tweezer Bottom - Bull", overlay=true)
