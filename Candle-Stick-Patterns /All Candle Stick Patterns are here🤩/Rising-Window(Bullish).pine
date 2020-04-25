@@ -1,5 +1,5 @@
 //@version=5
-indicator("Rising Three Methods - Bullish", shorttitle = "Rising Three Methods - Bull", overlay=true)
+indicator("Rising Window - Bullish", shorttitle = "Rising Window - Bull", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -46,12 +46,10 @@ patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
 label_color_bullish = input(color.blue, "Label Color Bullish")
-C_RisingThreeMethodsBullishNumberOfCandles = 5
-C_RisingThreeMethodsBullish = false
-if C_UpTrend[4] and (C_LongBody[4] and C_WhiteBody[4]) and (C_SmallBody[3] and C_BlackBody[3] and open[3]<high[4] and close[3]>low[4]) and (C_SmallBody[2] and C_BlackBody[2] and open[2]<high[4] and close[2]>low[4]) and (C_SmallBody[1] and C_BlackBody[1] and open[1]<high[4] and close[1]>low[4]) and (C_LongBody and C_WhiteBody and close>close[4])
-	C_RisingThreeMethodsBullish := true
-alertcondition(C_RisingThreeMethodsBullish, title = "New pattern detected", message = "New Rising Three Methods – Bullish pattern detected")
-if C_RisingThreeMethodsBullish
-    var ttBullishRisingThreeMethods = "Rising Three Methods\nRising Three Methods is a five-candle bullish pattern that signifies a continuation of an existing uptrend. The first candle is long and green, followed by three short red candles with bodies inside the range of the first candle. The last candle is also green and long and it closes above the close of the first candle. This decisive fifth strongly bullish candle hints that bears could not reverse the prior uptrend and that bulls have regained control of the market."
-    label.new(bar_index, patternLabelPosLow, text="RTM", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishRisingThreeMethods)
-bgcolor(ta.highest(C_RisingThreeMethodsBullish?1:0, C_RisingThreeMethodsBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_RisingThreeMethodsBullishNumberOfCandles-1))
+C_RisingWindowBullishNumberOfCandles = 2
+C_RisingWindowBullish = false
+if C_UpTrend[1] and (C_Range!=0 and C_Range[1]!=0) and low > high[1]
+	C_RisingWindowBullish := true
+alertcondition(C_RisingWindowBullish, title = "New pattern detected", message = "New Rising Window – Bullish pattern detected")
+if C_RisingWindowBullish
+    var ttBullishRisingWindow = "Rising Window\nRising Window is a two-candle bullish continuation pattern that forms during an uptrend. Both candles in the pattern can be of any type with the exception of the Four-Price Doji. The most important charact
