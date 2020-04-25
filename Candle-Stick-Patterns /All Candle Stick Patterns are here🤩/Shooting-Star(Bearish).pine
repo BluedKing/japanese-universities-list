@@ -1,5 +1,5 @@
 //@version=5
-indicator("Rising Window - Bullish", shorttitle = "Rising Window - Bull", overlay=true)
+indicator("Shooting Star - Bearish", shorttitle = "Shooting Star - Bear", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -45,13 +45,12 @@ C_Doji = C_IsDojiBody and C_ShadowEquals
 patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
-label_color_bullish = input(color.blue, "Label Color Bullish")
-C_RisingWindowBullishNumberOfCandles = 2
-C_RisingWindowBullish = false
-if C_UpTrend[1] and (C_Range!=0 and C_Range[1]!=0) and low > high[1]
-	C_RisingWindowBullish := true
-alertcondition(C_RisingWindowBullish, title = "New pattern detected", message = "New Rising Window – Bullish pattern detected")
-if C_RisingWindowBullish
-    var ttBullishRisingWindow = "Rising Window\nRising Window is a two-candle bullish continuation pattern that forms during an uptrend. Both candles in the pattern can be of any type with the exception of the Four-Price Doji. The most important characteristic of the pattern is a price gap between the first candle's high and the second candle's low. That gap (window) between two bars signifies support against the selling pressure."
-    label.new(bar_index, patternLabelPosLow, text="RW", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishRisingWindow)
-bgcolor(ta.highest(C_RisingWindowBullish?1:0, C_RisingWindowBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_RisingWindowBullishNumberOfCandles-1))
+label_color_bearish = input(color.red, "Label Color Bearish")
+C_ShootingStarBearishNumberOfCandles = 1
+C_ShootingStarBearish = false
+if C_SmallBody and C_Body > 0 and C_BodyHi < hl2 and C_UpShadow >= C_Factor * C_Body and not C_HasDnShadow
+	if C_UpTrend
+	    C_ShootingStarBearish := true
+alertcondition(C_ShootingStarBearish, title = "New pattern detected", message = "New Shooting Star – Bearish pattern detected")
+if C_ShootingStarBearish
+    var ttBearishShootingStar = "Shooting Star\nThis single day pattern can appear dur
