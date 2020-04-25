@@ -53,4 +53,6 @@ if C_SmallBody and C_Body > 0 and C_BodyHi < hl2 and C_UpShadow >= C_Factor * C_
 	    C_ShootingStarBearish := true
 alertcondition(C_ShootingStarBearish, title = "New pattern detected", message = "New Shooting Star – Bearish pattern detected")
 if C_ShootingStarBearish
-    var ttBearishShootingStar = "Shooting Star\nThis single day pattern can appear dur
+    var ttBearishShootingStar = "Shooting Star\nThis single day pattern can appear during an uptrend and opens high, while it closes near its open. It trades much higher as well. It is bearish in nature, but looks like an Inverted Hammer."
+    label.new(bar_index, patternLabelPosHigh, text="SS", style=label.style_label_down, color = label_color_bearish, textcolor=color.white, tooltip = ttBearishShootingStar)
+bgcolor(ta.highest(C_ShootingStarBearish?1:0, C_ShootingStarBearishNumberOfCandles)!=0 ? color.new(color.red, 90) : na, offset=-(C_ShootingStarBearishNumberOfCandles-1))
