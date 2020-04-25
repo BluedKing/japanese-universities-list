@@ -1,0 +1,10 @@
+//@version=5
+indicator("Piercing - Bullish", shorttitle = "Piercing - Bull", overlay=true)
+
+C_DownTrend = true
+C_UpTrend = true
+var trendRule1 = "SMA50"
+var trendRule2 = "SMA50, SMA200"
+var trendRule = input.string(trendRule1, "Detect Trend Based On", options=[trendRule1, trendRule2, "No detection"])
+
+if trendRule == trendRu

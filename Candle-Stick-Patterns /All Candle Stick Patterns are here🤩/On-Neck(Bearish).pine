@@ -1,5 +1,6 @@
+
 //@version=5
-indicator("Morning Star - Bullish", shorttitle = "Morning Star - Bull", overlay=true)
+indicator("On Neck - Bearish", shorttitle = "On Neck - Bear", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -45,14 +46,13 @@ C_Doji = C_IsDojiBody and C_ShadowEquals
 patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
-label_color_bullish = input(color.blue, "Label Color Bullish")
-C_MorningStarBullishNumberOfCandles = 3
-C_MorningStarBullish = false
-if C_LongBody[2] and C_SmallBody[1] and C_LongBody
-    if C_DownTrend and C_BlackBody[2] and C_BodyHi[1] < C_BodyLo[2] and C_WhiteBody and C_BodyHi >= C_BodyMiddle[2] and C_BodyHi < C_BodyHi[2] and C_BodyHi[1] < C_BodyLo
-        C_MorningStarBullish := true
-alertcondition(C_MorningStarBullish, title = "New pattern detected", message = "New Morning Star – Bullish pattern detected")
-if C_MorningStarBullish
-    var ttBullishMorningStar = "Morning Star\nA three-day bullish reversal pattern, which consists of three candlesticks will look something like this: The first being a long-bodied red candle that extends the current downtrend. Next comes a short, middle candle that gaps down on the open. After comes a long-bodied green candle, which gaps up on the open and closes above the midpoint of the body of the first day."
-    label.new(bar_index, patternLabelPosLow, text="MS", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishMorningStar)
-bgcolor(ta.highest(C_MorningStarBullish?1:0, C_MorningStarBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_MorningStarBullishNumberOfCandles-1))
+label_color_bearish = input(color.red, "Label Color Bearish")
+C_OnNeckBearishNumberOfCandles = 2
+C_OnNeckBearish = false
+if C_DownTrend and C_BlackBody[1] and C_LongBody[1] and C_WhiteBody and open < close[1] and C_SmallBody and C_Range!=0 and math.abs(close-low[1])<=C_BodyAvg*0.05
+	C_OnNeckBearish := true
+alertcondition(C_OnNeckBearish, title = "New pattern detected", message = "New On Neck – Bearish pattern detected")
+if C_OnNeckBearish
+    var ttBearishOnNeck = "On Neck\nOn Neck is a two-line continuation pattern found in a downtrend. The first candle is long and red, the second candle is short and has a green body. The closing price of the second candle is close or equal to the first candle's low price. The pattern hints at a continuation of a downtrend, and penetrating the low of the green candlestick is sometimes considered a confirmation. "
+    label.new(bar_index, patternLabelPosHigh, text="ON", style=label.style_label_down, color = label_color_bearish, textcolor=color.white, tooltip = ttBearishOnNeck)
+bgcolor(ta.highest(C_OnNeckBearish?1:0, C_OnNeckBearishNumberOfCandles)!=0 ? color.new(color.red, 90) : na, offset=-(C_OnNeckBearishNumberOfCandles-1))
