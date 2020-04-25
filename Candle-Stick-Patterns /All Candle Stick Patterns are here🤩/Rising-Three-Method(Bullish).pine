@@ -1,0 +1,5 @@
+//@version=5
+indicator("Rising Three Methods - Bullish", shorttitle = "Rising Three Methods - Bull", overlay=true)
+
+C_DownTrend = true
+C_UpTrend 
