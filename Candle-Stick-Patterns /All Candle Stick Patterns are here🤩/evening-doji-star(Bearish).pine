@@ -52,4 +52,6 @@ if C_LongBody[2] and C_IsDojiBody[1] and C_LongBody and C_UpTrend and C_WhiteBod
 	C_EveningDojiStarBearish := true
 alertcondition(C_EveningDojiStarBearish, title = "New pattern detected", message = "New Evening Doji Star – Bearish pattern detected")
 if C_EveningDojiStarBearish
-    var ttBearishEveningDojiStar = "Evening Doji Star\nThis candlestick pattern is a variation of the Evening Star pattern. It is bearish and continues an uptrend with a long-bodied, green candle day. It i
+    var ttBearishEveningDojiStar = "Evening Doji Star\nThis candlestick pattern is a variation of the Evening Star pattern. It is bearish and continues an uptrend with a long-bodied, green candle day. It is then followed by a gap and a Doji candle and concludes with a downward close. The close would be below the first day’s midpoint. It is more bearish than the regular evening star pattern because of the existence of the Doji."
+    label.new(bar_index, patternLabelPosHigh, text="EDS", style=label.style_label_down, color = label_color_bearish, textcolor=color.white, tooltip = ttBearishEveningDojiStar)
+bgcolor(ta.highest(C_EveningDojiStarBearish?1:0, C_EveningDojiStarBearishNumberOfCandles)!=0 ? color.new(color.red, 90) : na, offset=-(C_EveningDojiStarBearishNumberOfCandles-1))
