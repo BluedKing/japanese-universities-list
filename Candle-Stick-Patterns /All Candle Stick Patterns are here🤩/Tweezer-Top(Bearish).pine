@@ -1,5 +1,6 @@
+
 //@version=5
-indicator("Tweezer Bottom - Bullish", shorttitle = "Tweezer Bottom - Bull", overlay=true)
+indicator("Tweezer Top - Bearish", shorttitle = "Tweezer Top - Bear", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -45,13 +46,13 @@ C_Doji = C_IsDojiBody and C_ShadowEquals
 patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
-label_color_bullish = input(color.blue, "Label Color Bullish")
-C_TweezerBottomBullishNumberOfCandles = 2
-C_TweezerBottomBullish = false
-if C_UpTrend[1] and (not C_IsDojiBody or (C_HasUpShadow and C_HasDnShadow)) and math.abs(low-low[1]) <= C_BodyAvg*0.05 and C_BlackBody[1] and C_WhiteBody and C_LongBody[1]
-	C_TweezerBottomBullish := true
-alertcondition(C_TweezerBottomBullish, title = "New pattern detected", message = "New Tweezer Bottom – Bullish pattern detected")
-if C_TweezerBottomBullish
-    var ttBullishTweezerBottom = "Tweezer Bottom\nTweezer Bottom is a two-candle pattern that signifies a potential bullish reversal. The pattern is found during a downtrend. The first candle is long and red, the second candle is green, its lows nearly identical to the low of the previous candle. The virtually identical lows together with the inverted directions hint that bulls might be taking over the market."
-    label.new(bar_index, patternLabelPosLow, text="TB", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishTweezerBottom)
-bgcolor(ta.highest(C_TweezerBottomBullish?1:0, C_TweezerBottomBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_TweezerBottomBullishNumberOfCandles-1))
+label_color_bearish = input(color.red, "Label Color Bearish")
+C_TweezerTopBearishNumberOfCandles = 2
+C_TweezerTopBearish = false
+if C_UpTrend[1] and (not C_IsDojiBody or (C_HasUpShadow and C_HasDnShadow)) and math.abs(high-high[1]) <= C_BodyAvg*0.05 and C_WhiteBody[1] and C_BlackBody and C_LongBody[1]
+	C_TweezerTopBearish := true
+alertcondition(C_TweezerTopBearish, title = "New pattern detected", message = "New Tweezer Top – Bearish pattern detected")
+if C_TweezerTopBearish
+    var ttBearishTweezerTop = "Tweezer Top\nTweezer Top is a two-candle pattern that signifies a potential bearish reversal. The pattern is found during an uptrend. The first candle is long and green, the second candle is red, and its high is nearly identical to the high of the previous candle. The virtually identical highs, together with the inverted directions, hint that bears might be taking over the market."
+    label.new(bar_index, patternLabelPosHigh, text="TT", style=label.style_label_down, color = label_color_bearish, textcolor=color.white, tooltip = ttBearishTweezerTop)
+bgcolor(ta.highest(C_TweezerTopBearish?1:0, C_TweezerTopBearishNumberOfCandles)!=0 ? color.new(color.red, 90) : na, offset=-(C_TweezerTopBearishNumberOfCandles-1))

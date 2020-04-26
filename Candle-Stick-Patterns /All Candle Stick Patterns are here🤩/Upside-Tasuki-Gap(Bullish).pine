@@ -1,5 +1,6 @@
+
 //@version=5
-indicator("Tweezer Bottom - Bullish", shorttitle = "Tweezer Bottom - Bull", overlay=true)
+indicator("Upside Tasuki Gap - Bullish", shorttitle = "Upside Tasuki Gap - Bull", overlay=true)
 
 C_DownTrend = true
 C_UpTrend = true
@@ -46,12 +47,12 @@ patternLabelPosLow = low - (ta.atr(30) * 0.6)
 patternLabelPosHigh = high + (ta.atr(30) * 0.6)
 
 label_color_bullish = input(color.blue, "Label Color Bullish")
-C_TweezerBottomBullishNumberOfCandles = 2
-C_TweezerBottomBullish = false
-if C_UpTrend[1] and (not C_IsDojiBody or (C_HasUpShadow and C_HasDnShadow)) and math.abs(low-low[1]) <= C_BodyAvg*0.05 and C_BlackBody[1] and C_WhiteBody and C_LongBody[1]
-	C_TweezerBottomBullish := true
-alertcondition(C_TweezerBottomBullish, title = "New pattern detected", message = "New Tweezer Bottom – Bullish pattern detected")
-if C_TweezerBottomBullish
-    var ttBullishTweezerBottom = "Tweezer Bottom\nTweezer Bottom is a two-candle pattern that signifies a potential bullish reversal. The pattern is found during a downtrend. The first candle is long and red, the second candle is green, its lows nearly identical to the low of the previous candle. The virtually identical lows together with the inverted directions hint that bulls might be taking over the market."
-    label.new(bar_index, patternLabelPosLow, text="TB", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishTweezerBottom)
-bgcolor(ta.highest(C_TweezerBottomBullish?1:0, C_TweezerBottomBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_TweezerBottomBullishNumberOfCandles-1))
+C_UpsideTasukiGapBullishNumberOfCandles = 3
+C_UpsideTasukiGapBullish = false
+if C_LongBody[2] and C_SmallBody[1] and C_UpTrend and C_WhiteBody[2] and C_BodyLo[1] > C_BodyHi[2] and C_WhiteBody[1] and C_BlackBody and C_BodyLo >= C_BodyHi[2] and C_BodyLo <= C_BodyLo[1]
+	C_UpsideTasukiGapBullish := true
+alertcondition(C_UpsideTasukiGapBullish, title = "New pattern detected", message = "New Upside Tasuki Gap – Bullish pattern detected")
+if C_UpsideTasukiGapBullish
+    var ttBullishUpsideTasukiGap = "Upside Tasuki Gap\nUpside Tasuki Gap is a three-candle pattern found in an uptrend that usually hints at the continuation of the uptrend. The first candle is long and green, followed by a smaller green candle with its opening price that gaps above the body of the previous candle. The third candle is red and it closes inside the gap created by the first two candles, unable to close it fully. The bear’s inability to close the gap hints that the uptrend might continue."
+    label.new(bar_index, patternLabelPosLow, text="UTG", style=label.style_label_up, color = label_color_bullish, textcolor=color.white, tooltip = ttBullishUpsideTasukiGap)
+bgcolor(ta.highest(C_UpsideTasukiGapBullish?1:0, C_UpsideTasukiGapBullishNumberOfCandles)!=0 ? color.new(color.blue, 90) : na, offset=-(C_UpsideTasukiGapBullishNumberOfCandles-1))
