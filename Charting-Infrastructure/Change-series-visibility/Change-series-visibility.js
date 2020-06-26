@@ -409,4 +409,26 @@ areaSeries.setData([
   {time: { year: 2018 ,month: 12 ,day: 13 }, value: 27.194756310432844},
   {time: { year: 2018 ,month: 12 ,day: 14 }, value: 27.734167131565883},
   {time: { year: 2018 ,month: 12 ,day: 15 }, value: 24.05390212833372},
-  {t
+  {time: { year: 2018 ,month: 12 ,day: 16 }, value: 21.615805455011305},
+  {time: { year: 2018 ,month: 12 ,day: 17 }, value: 22.624121687721438},
+  {time: { year: 2018 ,month: 12 ,day: 18 }, value: 21.757206666380267},
+  {time: { year: 2018 ,month: 12 ,day: 19 }, value: 23.05474340068941},
+  {time: { year: 2018 ,month: 12 ,day: 20 }, value: 21.138665266862475},
+  {time: { year: 2018 ,month: 12 ,day: 21 }, value: 19.29212507002832},
+  {time: { year: 2018 ,month: 12 ,day: 22 }, value: 16.822226065021788},
+  {time: { year: 2018 ,month: 12 ,day: 23 }, value: 18.60021046652594},
+  {time: { year: 2018 ,month: 12 ,day: 24 }, value: 17.169817462624007},
+  {time: { year: 2018 ,month: 12 ,day: 25 }, value: 24.97789136481337},
+  {time: { year: 2018 ,month: 12 ,day: 26 }, value: 34.74110695848255},
+  {time: { year: 2018 ,month: 12 ,day: 27 }, value: 47.31091122713031},
+  {time: { year: 2018 ,month: 12 ,day: 28 }, value: 60.86115425725829},
+  {time: { year: 2018 ,month: 12 ,day: 29 }, value: 72.98471681093078},
+  {time: { year: 2018 ,month: 12 ,day: 30 }, value: 87.37327001252271},
+  {time: { year: 2018 ,month: 12 ,day: 31 }, value: 96.24248956779961},
+]);
+
+function toggleVisibility(visibility) {
+	areaSeries.applyOptions({
+			visible: visibility === 'Show'
+		});
+}
