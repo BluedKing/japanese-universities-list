@@ -1,3 +1,5 @@
+
+
 function createSimpleSwitcher(items, activeItem, activeItemChangedCallback) {
 	var switcherElement = document.createElement('div');
 	switcherElement.classList.add('switcher');
