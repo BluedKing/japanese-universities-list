@@ -333,3 +333,51 @@ series.setData([
 	{ time: "2019-05-14", value: 91.599998 },
 	{ time: "2019-05-15", value: 90.080002 },
 	{ time: "2019-05-16", value: 91.68 },
+	{ time: "2019-05-17", value: 91.959999 },
+	{ time: "2019-05-20", value: 91.080002 },
+	{ time: "2019-05-21", value: 90.760002 },
+	{ time: "2019-05-22", value: 91 },
+	{ time: "2019-05-23", value: 90.739998 },
+	{ time: "2019-05-24", value: 91 },
+	{ time: "2019-05-27", value: 91.199997 },
+	{ time: "2019-05-28", value: 90.68 },
+	{ time: "2019-05-29", value: 91.120003 },
+	{ time: "2019-05-30", value: 90.419998 },
+	{ time: "2019-05-31", value: 93.800003 },
+	{ time: "2019-06-03", value: 96.800003 },
+	{ time: "2019-06-04", value: 96.34 },
+	{ time: "2019-06-05", value: 95.94}
+]);
+
+function businessDayToString(businessDay) {
+	return businessDay.year + '-' + businessDay.month + '-' + businessDay.day;
+}
+
+var toolTipWidth = 80;
+var toolTipHeight = 80;
+var toolTipMargin = 15;
+
+var toolTip = document.createElement('div');
+toolTip.className = 'floating-tooltip-2';
+container.appendChild(toolTip);
+
+// update tooltip
+chart.subscribeCrosshairMove(function(param) {
+		if (param.point === undefined || !param.time || param.point.x < 0 || param.point.x > container.clientWidth || param.point.y < 0 || param.point.y > container.clientHeight) {
+			toolTip.style.display = 'none';
+		} else {
+			const dateStr = businessDayToString(param.time);
+			toolTip.style.display = 'block';
+			var price = param.seriesPrices.get(series);
+			toolTip.innerHTML = '<div style="color: #009688">Apple Inc.</div><div style="font-size: 24px; margin: 4px 0px; color: #21384d">' + Math.round(100 * price) / 100 + '</div><div style="color: #21384d">' + dateStr + '</div>';
+			var coordinate = series.priceToCoordinate(price);
+			var shiftedCoordinate = param.point.x - 50;
+			if (coordinate === null) {
+				return;
+			}
+			shiftedCoordinate = Math.max(0, Math.min(container.clientWidth - toolTipWidth, shiftedCoordinate));
+			var coordinateY = coordinate - toolTipHeight - toolTipMargin > 0 ? coordinate - toolTipHeight - toolTipMargin : Math.max(0, Math.min(container.clientHeight - toolTipHeight - toolTipMargin, coordinate + toolTipMargin));
+			toolTip.style.left = shiftedCoordinate + 'px';
+			toolTip.style.top = coordinateY + 'px';
+		}
+});
