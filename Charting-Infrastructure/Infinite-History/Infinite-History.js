@@ -79,4 +79,34 @@ function generateControlPoints(res, period, dataMultiplier) {
 	var days = getDiffDays(time, timeTo);
 	dataMultiplier = dataMultiplier || 1;
 	var controlPoints = [];
-	controlPoints.push({ index: 0, price: getRandomPrice() * dataMultiplie
+	controlPoints.push({ index: 0, price: getRandomPrice() * dataMultiplier });
+	for (var i = 0; i < days; i++) {
+		if (i > 0 && i < days - 1 && Math.random() < 0.05) {
+			controlPoints.push({ index: i, price: getRandomPrice() * dataMultiplier });
+		}
+		res.push({ time: time });
+		time = nextBusinessDay(time);
+	}
+	controlPoints.push({ index: res.length - 1, price: getRandomPrice() * dataMultiplier });
+	return controlPoints;
+}
+
+function getDiffDays(dateFrom, dateTo) {
+	var df = convertBusinessDayToUTCTimestamp(dateFrom);
+	var dt = convertBusinessDayToUTCTimestamp(dateTo);
+	var diffTime = Math.abs(dt.getTime() - df.getTime());
+	return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}
+
+function convertBusinessDayToUTCTimestamp(date) {
+	return new Date(Date.UTC(date.year, date.month - 1, date.day, 0, 0, 0, 0));
+}
+
+function nextBusinessDay(time) {
+	var d = convertBusinessDayToUTCTimestamp({ year: time.year, month: time.month, day: time.day + 1 });
+	return { year: d.getUTCFullYear(), month: d.getUTCMonth() + 1, day: d.getUTCDate() };
+}
+
+function getRandomPrice() {
+	return 10 + Math.round(Math.random() * 10000) / 100;
+}
