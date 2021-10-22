@@ -12,3 +12,95 @@ var chart = LightweightCharts.createChart(container, {
   crosshair: {
 		mode: LightweightCharts.CrosshairMode.Normal,
 	},
+});
+
+var candleSeries = chart.addCandlestickSeries();
+var data = generateBarsData();
+candleSeries.setData(data);
+
+var smaData = calculateSMA(data, 10);
+var smaLine = chart.addLineSeries({
+	color: 'rgba(4, 111, 232, 1)',
+	lineWidth: 2,
+});
+smaLine.setData(smaData);
+
+var legend = document.createElement('div');
+legend.className = 'sma-legend';
+container.appendChild(legend);
+legend.style.display = 'block';
+legend.style.left = 3 + 'px';
+legend.style.top = 3 + 'px';
+
+function setLegendText(priceValue) {
+	let val = '∅';
+	if (priceValue !== undefined) {
+		val = (Math.round(priceValue * 100) / 100).toFixed(2);
+	}
+	legend.innerHTML = 'MA10 <span style="color:rgba(4, 111, 232, 1)">' + val + '</span>';
+}
+
+setLegendText(smaData[smaData.length - 1].value);
+
+chart.subscribeCrosshairMove((param) => {
+	setLegendText(param.seriesPrices.get(smaLine));
+});
+
+function calculateSMA(data, count){
+  var avg = function(data) {
+    var sum = 0;
+    for (var i = 0; i < data.length; i++) {
+       sum += data[i].close;
+    }
+    return sum / data.length;
+  };
+  var result = [];
+  for (var i=count - 1, len=data.length; i < len; i++){
+    var val = avg(data.slice(i - count + 1, i));
+    result.push({ time: data[i].time, value: val});
+  }
+  return result;
+}
+
+function generateBarsData(period) {
+	var res = [];
+	var controlPoints = generateControlPoints(res, period);
+	for (var i = 0; i < controlPoints.length - 1; i++) {
+		var left = controlPoints[i];
+		var right = controlPoints[i + 1];
+		fillBarsSegment(left, right, res);
+	}
+	return res;
+}
+
+function fillBarsSegment(left, right, points) {
+	var deltaY = right.price - left.price;
+	var deltaX = right.index - left.index;
+	var angle = deltaY / deltaX;
+	for (var i = left.index; i <= right.index; i++) {
+		var basePrice = left.price + (i - left.index) * angle;
+		var openNoise = (0.1 - Math.random() * 0.2) + 1;
+		var closeNoise = (0.1 - Math.random() * 0.2) + 1;
+		var open = basePrice * openNoise;
+		var close = basePrice * closeNoise;
+		var high = Math.max(basePrice * (1 + Math.random() * 0.2), open, close);
+		var low = Math.min(basePrice * (1 - Math.random() * 0.2), open, close);
+		points[i].open = open;
+		points[i].high = high;
+		points[i].low = low;
+		points[i].close = close;
+	}
+}
+
+function generateControlPoints(res, period, dataMultiplier) {
+	var time = period !== undefined ? period.timeFrom : { day: 1, month: 1, year: 2018 };
+	var timeTo = period !== undefined ? period.timeTo : { day: 1, month: 1, year: 2019 };
+	var days = getDiffDays(time, timeTo);
+	dataMultiplier = dataMultiplier || 1;
+	var controlPoints = [];
+	controlPoints.push({ index: 0, price: getRandomPrice() * dataMultiplier });
+	for (var i = 0; i < days; i++) {
+		if (i > 0 && i < days - 1 && Math.random() < 0.05) {
+			controlPoints.push({ index: i, price: getRandomPrice() * dataMultiplier });
+		}
+		res.p
