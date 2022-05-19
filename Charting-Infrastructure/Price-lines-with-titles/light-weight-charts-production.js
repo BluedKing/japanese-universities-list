@@ -1,3 +1,4 @@
+
 /*!
  * @license
  * TradingView Lightweight Charts v3.8.0
