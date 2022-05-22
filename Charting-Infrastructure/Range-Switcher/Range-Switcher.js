@@ -455,4 +455,107 @@ var monthData = [
 	{ time: '2016-04-01', value: 25.91 },
 	{ time: '2016-05-02', value: 25.84 },
 	{ time: '2016-06-01', value: 25.94 },
-	{ time: '2016-07-01'
+	{ time: '2016-07-01', value: 26.19 },
+	{ time: '2016-08-01', value: 26.06 },
+	{ time: '2016-09-01', value: 25.65 },
+	{ time: '2016-10-03', value: 25.80 },
+	{ time: '2016-11-01', value: 25.06 },
+	{ time: '2016-12-01', value: 25.20 },
+	{ time: '2017-01-02', value: 25.70 },
+	{ time: '2017-02-01', value: 25.78 },
+	{ time: '2017-03-01', value: 25.90 },
+	{ time: '2017-04-03', value: 26.02 },
+	{ time: '2017-05-01', value: 26.02 },
+	{ time: '2017-06-01', value: 26.39 },
+	{ time: '2017-07-03', value: 26.30 },
+	{ time: '2017-08-01', value: 26.14 },
+	{ time: '2017-09-01', value: 26.39 },
+	{ time: '2017-10-02', value: 26.12 },
+	{ time: '2017-11-01', value: 25.81 },
+	{ time: '2017-12-01', value: 25.82 },
+	{ time: '2018-01-01', value: 26.06 },
+	{ time: '2018-02-01', value: 25.78 },
+	{ time: '2018-03-01', value: 25.75 },
+	{ time: '2018-04-02', value: 25.72 },
+	{ time: '2018-05-01', value: 25.75 },
+	{ time: '2018-06-01', value: 26.58 },
+	{ time: '2018-07-02', value: 26.14 },
+	{ time: '2018-08-01', value: 25.86 },
+	{ time: '2018-09-03', value: 25.67 },
+	{ time: '2018-10-01', value: 25.82 },
+	{ time: '2018-11-01', value: 25.41 },
+	{ time: '2018-12-03', value: 25.77 },
+	{ time: '2019-01-01', value: 25.35 },
+	{ time: '2019-02-01', value: 25.79 },
+	{ time: '2019-03-01', value: 25.77 },
+	{ time: '2019-04-01', value: 25.90 },
+	{ time: '2019-05-01', value: 26.23 },
+];
+
+var yearData = [
+	{ time: '2006-01-02', value: 24.89 },
+	{ time: '2007-01-01', value: 25.50 },
+	{ time: '2008-01-01', value: 23.90 },
+	{ time: '2009-01-01', value: 15.40 },
+	{ time: '2010-01-01', value: 22.00 },
+	{ time: '2011-01-03', value: 23.73 },
+	{ time: '2012-01-02', value: 24.84 },
+	{ time: '2013-01-01', value: 25.26 },
+	{ time: '2014-01-01', value: 24.98 },
+	{ time: '2015-01-01', value: 25.95 },
+	{ time: '2016-01-01', value: 25.55 },
+	{ time: '2017-01-02', value: 25.70 },
+	{ time: '2018-01-01', value: 26.06 },
+	{ time: '2019-01-01', value: 26.23 },
+];
+
+var seriesesData = new Map([
+  ['1D', dayData ],
+  ['1W', weekData ],
+  ['1M', monthData ],
+  ['1Y', yearData ],
+]);
+
+var switcherElement = createSimpleSwitcher(intervals, intervals[0], syncToInterval);
+
+var chartElement = document.createElement('div');
+
+var chart = LightweightCharts.createChart(chartElement, {
+	width: 600,
+  height: 300,
+	layout: {
+		backgroundColor: '#000000',
+		textColor: '#d1d4dc',
+	},
+	grid: {
+		vertLines: {
+			visible: false,
+		},
+		horzLines: {
+			color: 'rgba(42, 46, 57, 0.5)',
+		},
+	},
+	rightPriceScale: {
+		borderVisible: false,
+	},
+	timeScale: {
+		borderVisible: false,
+	},
+	crosshair: {
+		horzLine: {
+			visible: false,
+		},
+	},
+});
+
+document.body.appendChild(chartElement);
+document.body.appendChild(switcherElement);
+
+var areaSeries = null;
+
+function syncToInterval(interval) {
+	if (areaSeries) {
+		chart.removeSeries(areaSeries);
+		areaSeries = null;
+	}
+	
