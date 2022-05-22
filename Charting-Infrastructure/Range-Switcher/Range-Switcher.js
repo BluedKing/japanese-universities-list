@@ -558,4 +558,13 @@ function syncToInterval(interval) {
 		chart.removeSeries(areaSeries);
 		areaSeries = null;
 	}
-	
+	areaSeries = chart.addAreaSeries({
+    topColor: 'rgba(76, 175, 80, 0.56)',
+    bottomColor: 'rgba(76, 175, 80, 0.04)',
+    lineColor: 'rgba(76, 175, 80, 1)',
+    lineWidth: 2,
+	});
+	areaSeries.setData(seriesesData.get(interval));
+}
+
+syncToInterval(intervals[0]);
