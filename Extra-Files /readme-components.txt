@@ -39,4 +39,29 @@ The true range indicator is taken as the greatest of the following: current high
 <p>The Balance of Power (BOP) indicator uses price to measure buying and selling pressure. It determines the strength of the buyers and sellers by looking at how strongly the price has changed, rather than using volume.</p>
 
 <li>Bollinger Bands Width 📈</li>
-<p>The Bollinger Band Width is the difference between the upper and the lower Bollinger BandsOpens in a new window divided by the middle band. This technical indicator provides an easy way to visualize consolidation before price movements (low bandwidth values) or periods of higher volatility (high bandwidth values). The Bollinger Band Width uses the same two parameters as the Bollinger Bands: a simple moving- average period (for the middle band) and the n
+<p>The Bollinger Band Width is the difference between the upper and the lower Bollinger BandsOpens in a new window divided by the middle band. This technical indicator provides an easy way to visualize consolidation before price movements (low bandwidth values) or periods of higher volatility (high bandwidth values). The Bollinger Band Width uses the same two parameters as the Bollinger Bands: a simple moving- average period (for the middle band) and the number of standard deviations by which the upper and lower bands should be offset from the middle band.</p>
+
+<li>Bollinger Bands 📈</li>
+<p>A Bollinger Band® is a technical analysis tool defined by a set of trendlines plotted two standard deviations (positively and negatively) away from a simple moving average (SMA) of a security's price, but which can be adjusted to user preferences.
+Bollinger Bands® were developed and copyrighted by famous technical trader John Bollinger, designed to discover opportunities that give investors a higher probability of properly identifying when an asset is oversold or overbought.
+</p>
+
+<li>Bull/Bear Power 📈</li>
+<p>Bull power rises when bulls are stronger and falls when they are weaker, even becoming negative when they are utterly weak.
+Bear power, by contrast, is the capacity of bears to push prices below the moving average. The distance between the low and the EMA, which widens when the bears are weaker and narrows when they are stronger, gives this figure. Bear power is typically negative, so if it turns positive, the bulls have taken complete control.</p>
+
+<li>Chaikin Money Flow 📈 </li>
+<p>The Chaikin Money Flow (CMF) is an indicator created by Marc Chaikin in the 1980s to monitor the accumulation and distribution of a stock over a specified period. The default CMF period is 21 days. The indicator readings range between +1 and -1. Any crosses above or below 0 can be used to identify changes in money flow, as well as buying or selling momentum.</p>
+
+<li>Chaikin Oscillator 📈</li>
+<p>The Chaikin oscillator generates a bullish divergence when it crosses above a baseline. The baseline is called the accumulation-distribution line. A cross above that line indicates that traders are accumulating, which is typically bullish.
+The Chaikin oscillator utilizes two primary buy and sell signals. </p>
+
+<li>Chande Kroll Stop 📈</li>
+<p>The Chande Kroll Stop is an indicator that calculates average stop-loss and take-profit prices for Bitcoin (BTC), Ethereum (ETH), and other altcoins. The indicator can be used on the 1M, 1W, 1D, 6H, and short-term charts. It uses two lines: Red and green to signify the average stop-loss and take-profit limits.</p>
+
+<li>Chande Momentum Oscillator 📈</li>
+<p>The Chande momentum oscillator is a technical momentum indicator introduced by Tushar Chande in his 1994 book The New Technical Trader. The formula calculates the difference between the sum of recent gains and the sum of recent losses and then divides the result by the sum of all price movements over the same period.</p>
+
+<li>Chop Zone 📈</li>
+<p>The Chop Zone indicator is a technical indicator that confirms trendiness or sideways movement in the price of Bitcoin (BTC). Crypto can only go three ways: Up, down, and sideways. Up and down are “trending” movements and sideways is a “choppy” movement. The C
