@@ -196,4 +196,28 @@ Unlike conventional oscillators such as the Relative Strength Index (RSI), the M
 <p>The percentage price oscillator (PPO) is a technical momentum indicator that shows the relationship between two moving averages in percentage terms. The moving averages are a 26-period and 12-period exponential moving average (EMA).</p>
 
 <li>Rate of Change 📈</li>
-<p>Rate of change is used to mathematically describe the percentage change in value over a defined period of time, and it represents the momentum of a variable. The calculation for ROC is simple in that it takes the current value of a stock or index and 
+<p>Rate of change is used to mathematically describe the percentage change in value over a defined period of time, and it represents the momentum of a variable. The calculation for ROC is simple in that it takes the current value of a stock or index and divides it by the value from an earlier period.</p>
+
+<li>Relative Strength Index 📈</li>
+<p>The Relative Strength Index (RSI), developed by J. Welles Wilder, is a momentum oscillator that measures the speed and change of price movements. The RSI oscillates between zero and 100. Traditionally the RSI is considered overbought when above 70 and oversold when below 30.</p>
+
+<li>Relative Vigor Index 📈</li>
+<p>The Relative Vigor Index (RVI) is an oscillator based on the concept that prices tend to close higher than they open in up trends and close lower than they open in down trends. Basically, it is an oscillator that is in phase with the cycle of the underlying's price.</p>
+
+<li>Relative Volatility Index 📈</li>
+<p>Relative Volatility Index (RVI) Indicator is a momentum oscillator, which measures both the speed as well as the rise or fall of price movements of a stock in terms of complete stock trading. Relative Volatility Index (RVI) Indicator is one of the top Technical Analysis Indicator.</p>
+
+<li>SMI Ergodic Indicator 📈</li>
+<p>The SMI Ergodic Indicator is the same as the True Strength Index (TSI) developed by William Blau, except the SMI includes a signal line. The SMI uses double moving averages of price minus previous price over 2 time frames. The signal line, which is an EMA of the SMI, is plotted to help trigger trading signals.</p>
+
+<li>SMI Erogdic Oscillator 📈</li>
+<p>SMI Ergodic is calculated the same as the True Strength Index except it is a double-smoothed. It also includes a signal line (in purple below) that is an exponential moving average of the SMI Ergodic plot (in orange below). Similar to Stochastics but absent the compression seen with stochastics at extremes. The Ergodic indicator helps identify long trends in prices. As with most oscillators, the overbought or oversold extremes are considered the signal areas.</p>
+
+<li>Stochastic RSI 📈</li>
+<p>The Stochastic RSI (StochRSI) is an indicator used in technical analysis that ranges between zero and one (or zero and 100 on some charting platforms) and is created by applying the Stochastic oscillator formula to a set of relative strength index (RSI) values rather than to standard price data.</p>
+
+<li>Stochastic 📈</li>
+<p>The stochastic oscillator, also known as stochastic indicator, is a popular trading indicator​ that is useful for predicting trend reversals. It also focuses on price momentum and can be used to identify overbought and oversold levels in shares, indices, currencies and many other investment assets.</p>
+
+<li>SuperTrend 📈</li>
+<p>A 'Supertrend' indicator is one, which can give you precise buy or sell signal in a trending market. As the name suggests, 'Supertrend' is a trend-following indicator just like moving averages and MACD (moving average convergence divergence). It is plotted on prices and their placement indicates the curren
