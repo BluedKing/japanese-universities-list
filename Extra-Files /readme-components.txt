@@ -168,4 +168,32 @@ Unlike conventional oscillators such as the Relative Strength Index (RSI), the M
 <p>A Weighted Moving Average puts more weight on recent data and less on past data. This is done by multiplying each bar's price by a weighting factor. Because of its unique calculation, WMA will follow prices more closely than a corresponding Simple Moving Average.</p>
 
 <li>Moving Average 📈</li>
-<p>A moving average is a statistic that captures the average change in a data series over time. In finance, moving averages are often used by technical analy
+<p>A moving average is a statistic that captures the average change in a data series over time. In finance, moving averages are often used by technical analysts to keep track of prices trends for specific securities.</p>
+
+<li>Multi-Time Period Charts 📈</li>
+<p>In specializing as a day trader, momentum trader, breakout trader or event risk trader, among other styles, many market participants lose sight of the larger trend, miss clear levels of support and resistance and overlook high probability entry and stop levels. In this article, we will describe what multiple time frame analysis is and how to choose the various periods and how to put it all together.</p>
+
+<li>Net Volume 📈</li>
+<p>Net volume is a technical indicator calculated by subtracting a security's uptick volume by its downtick volume over a specified period of time. Unlike standard volume, the indicator differentiates whether the market sentiment is leaning bullish or bearish.</p>
+
+<li>On Balance Volume 📈</li>
+<p>On Balance Volume (OBV) measures buying and selling pressure as a cumulative indicator that adds volume on up days and subtracts volume on down days. When the security closes higher than the previous close, all of the day's volume is considered up-volume.</p>
+
+<li>Open Interest 📈</li>
+<p>Open interest refers to the total number of outstanding derivative contracts that have not been settled. For each buyer of a futures contract there must be a seller. From the time the buyer or seller opens the contract until the counter-party closes it, that contract is considered 'open'.</p>
+
+<li>Parabolic SAR 📈</li>
+<p>The parabolic SAR is a technical indicator used to determine the price direction of an asset, as well as draw attention to when the price direction is changing. Sometimes known as the "stop and reversal system," the parabolic SAR was developed by J. Welles Wilder Jr., creator of the relative strength index (RSI).</p>
+
+<li>Pivot Points (High/Low) 📈</li>
+<p>Pivot Points (High/Low), also known as Bar Count Reversals, are used to anticipate potential price reversals. Pivot Point Highs are determined by the number of bars with lower highs on either side of a Pivot Point High.</p>
+
+<li>Pivot Points Standard 📈</li>
+<p>Pivot Points Standard is a technical indicator that is used to determine the levels at which price may face support or resistance. The Pivot Points indicator consists of a pivot point (PP) level and several support (S) and resistance (R) levels.
+</p>
+
+<li>Price Oscillator 📈</li>
+<p>The percentage price oscillator (PPO) is a technical momentum indicator that shows the relationship between two moving averages in percentage terms. The moving averages are a 26-period and 12-period exponential moving average (EMA).</p>
+
+<li>Rate of Change 📈</li>
+<p>Rate of change is used to mathematically describe the percentage change in value over a defined period of time, and it represents the momentum of a variable. The calculation for ROC is simple in that it takes the current value of a stock or index and 
