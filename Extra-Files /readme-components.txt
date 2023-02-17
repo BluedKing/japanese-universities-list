@@ -220,4 +220,31 @@ Unlike conventional oscillators such as the Relative Strength Index (RSI), the M
 <p>The stochastic oscillator, also known as stochastic indicator, is a popular trading indicator​ that is useful for predicting trend reversals. It also focuses on price momentum and can be used to identify overbought and oversold levels in shares, indices, currencies and many other investment assets.</p>
 
 <li>SuperTrend 📈</li>
-<p>A 'Supertrend' indicator is one, which can give you precise buy or sell signal in a trending market. As the name suggests, 'Supertrend' is a trend-following indicator just like moving averages and MACD (moving average convergence divergence). It is plotted on prices and their placement indicates the curren
+<p>A 'Supertrend' indicator is one, which can give you precise buy or sell signal in a trending market. As the name suggests, 'Supertrend' is a trend-following indicator just like moving averages and MACD (moving average convergence divergence). It is plotted on prices and their placement indicates the current trend.</p>
+
+<li>Technical Ratings 📈</li>
+<p>Technical indicators are heuristic or pattern-based signals produced by the price, volume, and/or open interest of a security or contract used by traders who follow technical analysis. By analyzing historical data, technical analysts use indicators to predict future price movements.</p>
+
+<li>Triple EMA 📈</li>
+<p>The triple exponential moving average (TEMA) was designed to smooth price fluctuations, thereby making it easier to identify trends without the lag associated with traditional moving averages (MA). It does this by taking multiple exponential moving averages (EMA) of the original EMA and subtracting out some of the lag.</p>
+
+<li>TRIX 📈</li>
+<p>Trix is a technical analysis oscillator developed in the 1980s by Jack Hutson, editor of Technical Analysis of Stocks and Commodities magazine. It shows the slope of a triple-smoothed exponential moving average. The name Trix is from "triple exponential."</p>
+
+<li>True Strength Indicator 📈</li>
+<p>The true strength index (TSI) is a technical momentum oscillator used to identify trends and reversals. The indicator may be useful for determining overbought and oversold conditions, indicating potential trend direction changes via centerline or signal line crossovers, and warning of trend weakness through divergence.</p>
+
+<li>Ultimate Oscillator 📈</li>
+<p>The ultimate oscillator is a theoretical concept in finance developed by Larry Williams as a way to account for the problems experienced in most oscillators when used over different lengths of time.</p>
+
+<li>Up - Down Volume 📈</li>
+<p>The Up/Down Volume ratio compares the representation of buyers vs. sellers over a period of time. The assumption is that if a stock closes UP for the day, the attributable volume was induced by buying pressure and thus the stock is under accumulation. Conversely, if a stock closes DOWN for the day, the trading activity is deemed to be selling induced, a sign of distribution.</p>
+
+<li>Volatility Stop 📈</li>
+<p>A volatility stop takes a multiple of the ATR, adds or subtracts it from the close, and places the stop at this price. The stop can only move higher during uptrends, lower during downtrends, or sideways. Once the trailing stop has been established, it should never be moved to a worse position.</p>
+
+<li>Volume Oscillator 📈</li>
+<p>The Volume Oscillator (VO) works on the technical premise that it is not the actual level of volume, but the change in volume relative to the recent past that has more technical significance. The Volume Oscillator displays the difference between two moving averages of a security's volume expressed as a percentage.</p>
+
+<li>Volume Weighted Average Price 📈</li>
+<p>The volume-weighted average price (VWAP) is a measurement that shows the average price of a security, adjusted for its volume. It is calculated during a spec
