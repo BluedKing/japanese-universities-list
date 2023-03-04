@@ -247,4 +247,25 @@ Unlike conventional oscillators such as the Relative Strength Index (RSI), the M
 <p>The Volume Oscillator (VO) works on the technical premise that it is not the actual level of volume, but the change in volume relative to the recent past that has more technical significance. The Volume Oscillator displays the difference between two moving averages of a security's volume expressed as a percentage.</p>
 
 <li>Volume Weighted Average Price 📈</li>
-<p>The volume-weighted average price (VWAP) is a measurement that shows the average price of a security, adjusted for its volume. It is calculated during a spec
+<p>The volume-weighted average price (VWAP) is a measurement that shows the average price of a security, adjusted for its volume. It is calculated during a specific trading session by taking the total dollar value of trading in the security and dividing it by the volume of trades.</p>
+
+<li>Volume Weighted Moving Average 📈</li>
+<p>A Volume Weighted Moving Average is a moving average where more weight is given to bars with heavy volume than with light volume. This the value of the moving average will be closer to where most trading actually happened than it otherwise would be without being volume weighted.</p>
+
+<li>Vortex Indicator 📈</li>
+<p>A vortex indicator (VI) is an indicator composed of two lines - an uptrend line (VI+) and a downtrend line (VI-). These lines are typically colored green and red respectively. A vortex indicator is used to spot trend reversals and confirm current trends.
+</p>
+
+<li>Williams Alligator 📈</li>
+<p>The Williams Alligator indicator is a technical analysis tool that uses smoothed moving averages.The indicator uses a smoothed average calculated with a simple moving average (SMA) to start.It uses three moving averages, set at five, eight, and 13 periods. The three moving averages comprise the Jaw, Teeth, and Lips of the Alligator.The indicator applies convergence-divergence relationships to build trading signals, with the Jaw making the slowest turns and the Lips making the fastest turns.</p>
+
+<li>Williams Fractals 📈</li>
+<p>The Bill Williams fractal indicator is an indicator that can be used as a standalone tool or in combination with several other indicators. 
+Fractals are a natural phenomenon of reversals within reversals. In order for a fractal to form, there needs to be at least five candles. There needs to be a series of five consecutive candles where the middle candle is the highest while the fourth and the fifth candles are lower.</p>
+
+<li>Williams Percent Range 📈</li>
+<p>Williams %R, or just %R, is a technical analysis oscillator showing the current closing price in relation to the high and low of the past N days (for a given N). It was developed by a publisher and promoter of trading materials, Larry Williams. Its purpose is to tell whether a stock or commodity market is trading near the high or the low, or somewhere in between, of its recent trading range.</p>
+
+<li>Woodies CCI 📈</li>
+<p>Woodies CCI is a Commodity Channel Index based system developed by Ken Woods. The main principle of this system is that the price moves in the direction of CCI.
+Zero line is the main indicator of support/resistance. If CCI crosses this level and does not go back for at least six bars, it might indicate trend existence; CCI crossing above zero line signifies the uptrend, if it crosses below, downtrend. Zero line is also merged with LSMA indicator which shows if the price is below or above LSMA (a moving average designed for Woodies CCI). Red areas of
