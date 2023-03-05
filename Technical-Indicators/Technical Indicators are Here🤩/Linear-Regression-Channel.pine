@@ -1,0 +1,14 @@
+//@version=5
+indicator("Linear Regression Channel", shorttitle="LinReg", overlay=true)
+
+lengthInput = input.int(100, title="Length", minval = 1, maxval = 5000)
+sourceInput = input.source(close, title="Source")
+
+group1 = "Channel Settings"
+useUpperDevInput = input.bool(true, title="Upper Deviation", inline = "Upper Deviation", group = group1)
+upperMultInput = input.float(2.0, title="", inline = "Upper Deviation", group = group1)
+useLowerDevInput = input.bool(true, title="Lower Deviation", inline = "Lower Deviation", group = group1)
+lowerMultInput = input.float(2.0, title="", inline = "Lower Deviation", group = group1)
+
+group2 = "Display Settings"
+showPearsonInput = input.boo
