@@ -6,4 +6,4 @@ ll = ta.lowest(low, length)
 if (not na(close[length]))
 	strategy.entry("PChLE", strategy.long, comment="PChLE", stop=hh)
 	strategy.entry("PChSE", strategy.short, comment="PChSE", stop=ll)
-//plot(strategy.equity, title="equity", color=color.red, linewidth=2, style=plot.style_areabr
+//plot(strategy.equity, title="equity", color=color.red, linewidth=2, style=plot.style_areabr)
