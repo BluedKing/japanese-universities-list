@@ -1,0 +1,4 @@
+//@version=5
+indicator(title="Aroon", shorttitle="Aroon", overlay=false, format=format.percent, precision=2, timeframe="", timeframe_gaps=true)
+length = input.int(14, minval=1)
+upper = 100 * 

@@ -68,4 +68,11 @@ isBuyValid = strategy.position_size == 0 and cross(close, boxUpperLevel) and isA
 isSellValid = strategy.position_size == 0 and cross(close, boxLowerLevel) and isADXLow
 
 //Long Entry Condition
-entry_long = isBuyValid and strategy.opentrades == 0 and (enableDire
+entry_long = isBuyValid and strategy.opentrades == 0 and (enableDirection == 1 or enableDirection == 0)
+strategy.order("open_long", true, when=entry_long)
+strategy.exit(id="close_long", from_entry="open_long", stop=stopLoss, limit=profitTarget)
+
+//Short Entry condition
+entryShort = isSellValid and strategy.opentrades == 0 and (enableDirection == -1 or enableDirection == 0)
+strategy.order("open_short", false, when=entryShort)
+strategy.exit(id="close_short", from_entry="open_short", stop=stopLoss, limit=profitTarget)
