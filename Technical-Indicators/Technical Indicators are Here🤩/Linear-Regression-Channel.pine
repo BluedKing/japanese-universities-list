@@ -88,4 +88,28 @@ calcDev(source, length, slope, average, intercept) =>
     
 [stdDev, pearsonR, upDev, dnDev] = calcDev(sourceInput, lengthInput, s, a, i)
 upperStartPrice = startPrice + (useUpperDevInput ? upperMultInput * stdDev : upDev)
-upperEndPrice = endPrice + (useUpperDevInput ? upperMultInput * stdDev : up
+upperEndPrice = endPrice + (useUpperDevInput ? upperMultInput * stdDev : upDev)
+var line upper = na
+lowerStartPrice = startPrice + (useLowerDevInput ? -lowerMultInput * stdDev : -dnDev)
+lowerEndPrice = endPrice + (useLowerDevInput ? -lowerMultInput * stdDev : -dnDev)
+var line lower = na
+if na(upper) and not na(upperStartPrice)
+    upper := line.new(bar_index - lengthInput + 1, upperStartPrice, bar_index, upperEndPrice, width=1, extend=extendStyle, color=color.new(colorUpper, 0))
+else
+    line.set_xy1(upper, bar_index - lengthInput + 1, upperStartPrice)
+    line.set_xy2(upper, bar_index, upperEndPrice)
+    na
+if na(lower) and not na(lowerStartPrice)
+    lower := line.new(bar_index - lengthInput + 1, lowerStartPrice, bar_index, lowerEndPrice, width=1, extend=extendStyle, color=color.new(colorUpper, 0))
+else
+    line.set_xy1(lower, bar_index - lengthInput + 1, lowerStartPrice)
+    line.set_xy2(lower, bar_index, lowerEndPrice)
+    na
+linefill.new(upper, baseLine, color = colorUpper)
+linefill.new(baseLine, lower, color = colorLower)
+    
+// Pearson's R
+var label r = na
+label.delete(r[1])
+if showPearsonInput and not na(pearsonR)
+    r := label.new(bar_index - lengthInput + 1, lowerStartPrice, str.tostring(pearsonR, "#.################"), color = color.new(color.white, 100), textcolor=color.new(colorUpper, 0), size=size.normal, style=label.style_label_up)
