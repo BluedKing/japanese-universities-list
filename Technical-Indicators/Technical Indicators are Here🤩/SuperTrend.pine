@@ -1,0 +1,4 @@
+//@version=5
+indicator("Supertrend", overlay=true, timeframe="", timeframe_gaps=true)
+
+atrPeriod = input(10, "AT
