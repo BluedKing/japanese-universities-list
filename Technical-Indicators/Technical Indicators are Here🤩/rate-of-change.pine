@@ -1,0 +1,3 @@
+//@version=5
+indicator(title="Rate Of Change", shorttitle="ROC", format=format.price, precision=2, timeframe="", timeframe_gaps=true)
+length = i
